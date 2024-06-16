@@ -4,7 +4,7 @@
 import unicodedata
 
 def count_letters(input_string):
-    if not isinstance(input_string, str):
+    if not isinstance(input_string, str):  ## first we check if the input string is not an instance of str u.e its not a string.
         return "Please enter a valid input"
 
     # Set of target letters to count, including their variations
@@ -13,7 +13,7 @@ def count_letters(input_string):
     # Create a dictionary to hold the counts
     count_dict = {letter: 0 for letter in letters_to_count}
 
-    # Normalize the input string to NFD
+    # Normalize the input string to NFD, the function uses unicodedata.normalize function to normalize input string into its unicode normalization for 'NFD'. this form decomposes characters into base characters and combining characters.
     normalized_string = unicodedata.normalize('NFD', input_string)
     
     # Iterate over each character in the normalized string
