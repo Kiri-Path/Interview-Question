@@ -1,34 +1,65 @@
 
 
+### main program code
 
 import unicodedata
 
 def count_letters(input_string):
-    if not isinstance(input_string, str):  ## first we check if the input string is not an instance of str u.e its not a string.
+    if not isinstance(input_string, str):
         return "Please enter a valid input"
-
+    
     # Set of target letters to count, including their variations
     letters_to_count = {'S', 'K', 'Y'}
     
-    # Create a dictionary to hold the counts
     count_dict = {letter: 0 for letter in letters_to_count}
-
-    # Normalize the input string to NFD, the function uses unicodedata.normalize function to normalize input string into its unicode normalization for 'NFD'. this form decomposes characters into base characters and combining characters.
+    
+    # Using defaultdict to simplify counting
+#     count_dict = defaultdict(int)
+    
+    # Normalize the input string to NFD
     normalized_string = unicodedata.normalize('NFD', input_string)
     
     # Iterate over each character in the normalized string
     for char in normalized_string:
-        # Normalize the character for comparison
-        normalized_char = unicodedata.normalize('NFD', char)
-        
         # Check if the normalized character (in uppercase) is one of the target letters
-        if normalized_char.upper() in letters_to_count:
-            count_dict[normalized_char.upper()] += 1
+        if char.upper() in letters_to_count:
+            count_dict[char.upper()] += 1
     
     return count_dict
 
 
 count_letters("This is a sentence")
+
+
+### Time complexity analysis
+
+
+Time complexity O(n) since we have to loop through enitre string
+Space complexity O()
+
+
+
+#### check performance using timeit function
+
+import timeit
+
+def time_function(func, *args):
+    return timeit.timeit(lambda: func(*args), number=1000)
+
+# Example usage
+if __name__ == "__main__":
+    # Small input
+    time_small = time_function(count_letters, "S" * 10)
+    print(f"Time for input size 10: {time_small:.6f} seconds")
+
+    # Medium input
+    time_medium = time_function(count_letters, "S" * 100)
+    print(f"Time for input size 100: {time_medium:.6f} seconds")
+
+    # Large input
+    time_large = time_function(count_letters, "S" * 1000)
+    print(f"Time for input size 1000: {time_large:.6f} seconds")
+
 
 
 ## below we apply unit testing
