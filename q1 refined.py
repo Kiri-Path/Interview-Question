@@ -16,7 +16,10 @@ def count_letters(input_string):
     # Using defaultdict to simplify counting
 #     count_dict = defaultdict(int)
     
-    # Normalize the input string to NFD
+    # Uses unicodedata.normalize('NFD', input_string) to normalize the input string to Normalization Form D (NFD). 
+    #Normalization here ensures that characters with diacritics or composed forms are decomposed into base characters and combining characters. 
+    # This step helps in standardizing the input string for accurate comparison.
+    
     normalized_string = unicodedata.normalize('NFD', input_string)
     
     # Iterate over each character in the normalized string
