@@ -53,23 +53,18 @@ import timeit
 def time_function(func, *args):
     return timeit.timeit(lambda: func(*args), number=1000)
 
-# Example usage
 if __name__ == "__main__":
-    # Small input
+ 
     time_small = time_function(count_letters, "S" * 10)
-    print(f"Time for input size 10: {time_small:.6f} seconds")
-
-    # Medium input
     time_medium = time_function(count_letters, "S" * 100)
-    print(f"Time for input size 100: {time_medium:.6f} seconds")
-
-    # Large input
     time_large = time_function(count_letters, "S" * 1000)
+    print(f"Time for input size 10: {time_small:.6f} seconds") 
+    print(f"Time for input size 100: {time_medium:.6f} seconds")
     print(f"Time for input size 1000: {time_large:.6f} seconds")
 
 
 
-## below we apply unit testing
+## Unit Testing
 
 import unittest
 
