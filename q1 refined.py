@@ -1,4 +1,8 @@
-
+# Write a program that counts the number of times the letters "S", "K" and "Y" appear in a string
+# You can write in pseudo code or any language you are comfortable with
+# Be prepared to discuss your solution and any improvements that can be made at the interview
+# Bonus marks will be given for enabling the code to be run and demonstrated at interview using replit.com and incorporating some units tests
+ 
 
 ### main program code
 
